@@ -1,0 +1,293 @@
+
+
+# DOCUMENTO DE PRUEBAS
+
+## Sistema de Gestión de Tienda
+
+**Evidencia:**
+
+GA4-220501096-AA1-EV02 – Aplicación Web Funcional
+
+**Aprendiz:**
+
+Juan David Chávez Hurtado
+
+**Programa:**
+
+Análisis y Desarrollo de Software – SENA
+
+**Fecha:**
+
+Julio de 2026
+
+---
+
+# TABLA DE CONTENIDO
+
+1. Introducción
+2. Objetivos
+3. Ambiente de Pruebas
+4. Casos de Prueba
+5. Resultados Obtenidos
+6. Evidencias
+7. Conclusiones
+
+---
+
+# 1. Introducción
+
+El presente documento tiene como propósito registrar las pruebas funcionales realizadas sobre la aplicación **Sistema de Gestión de Tienda**. Estas pruebas permiten verificar que cada módulo del sistema funciona correctamente y cumple con los requisitos establecidos para la evidencia.
+
+---
+
+# 2. Objetivos
+
+## Objetivo General
+
+Verificar el correcto funcionamiento de la aplicación web mediante la ejecución de pruebas sobre los módulos implementados.
+
+## Objetivos Específicos
+
+* Comprobar el funcionamiento del módulo de usuarios.
+* Validar el funcionamiento del módulo de productos.
+* Verificar la comunicación entre el frontend, el backend y la base de datos.
+* Registrar los resultados obtenidos durante las pruebas.
+
+---
+
+# 3. Ambiente de Pruebas
+
+| Elemento          | Descripción                        |
+| ----------------- | ---------------------------------- |
+| Sistema Operativo | Windows 10                         |
+| Editor            | Visual Studio Code                 |
+| Servidor          | Node.js                            |
+| Framework         | Express                            |
+| Base de Datos     | MySQL                              |
+| Frontend          | HTML5, CSS3, Bootstrap, JavaScript |
+| Navegador         | Google Chrome                      |
+| API               | REST                               |
+
+---
+
+# 4. Casos de Prueba
+
+## Caso de Prueba 1
+
+**Nombre:** Registrar Usuario
+
+**Objetivo:**
+
+Verificar que el sistema registre correctamente un nuevo usuario.
+
+**Datos utilizados**
+
+| Campo      | Valor                                     |
+| ---------- | ----------------------------------------- |
+| Nombre     | Pedro Pérez                               |
+| Correo     | [pedro@gmail.com](mailto:pedro@gmail.com) |
+| Contraseña | 123456                                    |
+
+**Resultado Esperado**
+
+El sistema debe almacenar el usuario y mostrar el mensaje:
+
+```
+Usuario creado correctamente
+```
+
+**Resultado Obtenido**
+
+El usuario fue registrado correctamente y apareció en la tabla.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 2
+
+**Nombre**
+
+Consultar Usuarios
+
+**Resultado Esperado**
+
+Mostrar todos los usuarios almacenados.
+
+**Resultado Obtenido**
+
+Los usuarios fueron listados correctamente.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 3
+
+**Nombre**
+
+Eliminar Usuario
+
+**Resultado Esperado**
+
+Eliminar el usuario seleccionado.
+
+**Resultado Obtenido**
+
+El usuario fue eliminado correctamente.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 4
+
+**Nombre**
+
+Registrar Producto
+
+**Datos**
+
+| Campo    | Valor   |
+| -------- | ------- |
+| Nombre   | Laptop  |
+| Precio   | 2500000 |
+| Cantidad | 5       |
+
+**Resultado Esperado**
+
+El producto debe registrarse correctamente.
+
+**Resultado Obtenido**
+
+El producto fue almacenado y apareció en la tabla.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 5
+
+**Nombre**
+
+Consultar Productos
+
+**Resultado Esperado**
+
+Mostrar todos los productos registrados.
+
+**Resultado Obtenido**
+
+Los productos fueron visualizados correctamente.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 6
+
+**Nombre**
+
+Eliminar Producto
+
+**Resultado Esperado**
+
+Eliminar el producto seleccionado.
+
+**Resultado Obtenido**
+
+El producto fue eliminado correctamente.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 7
+
+**Nombre**
+
+Conexión API REST
+
+**Resultado Esperado**
+
+La API debe responder correctamente a las solicitudes GET, POST y DELETE.
+
+**Resultado Obtenido**
+
+Las solicitudes fueron procesadas correctamente.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+## Caso de Prueba 8
+
+**Nombre**
+
+Conexión Base de Datos
+
+**Resultado Esperado**
+
+La aplicación debe conectarse correctamente con MySQL.
+
+**Resultado Obtenido**
+
+La conexión fue establecida sin errores.
+
+**Estado**
+
+✅ Aprobado
+
+---
+
+# 5. Resultados Obtenidos
+
+Durante la ejecución de las pruebas se comprobó el correcto funcionamiento de todos los módulos desarrollados.
+
+No se encontraron errores críticos que impidieran el funcionamiento de la aplicación.
+
+La comunicación entre el frontend, el backend y la base de datos fue satisfactoria.
+
+---
+
+# 6. Evidencias
+
+En esta sección se recomienda insertar capturas de pantalla de:
+
+* Página principal del sistema.
+* Gestión de usuarios.
+* Registro de usuario.
+* Lista de usuarios.
+* Gestión de productos.
+* Registro de producto.
+* Lista de productos.
+* Base de datos MySQL.
+* Visual Studio Code con el proyecto abierto.
+* Terminal mostrando el servidor en ejecución.
+
+---
+
+# 7. Conclusiones
+
+Las pruebas realizadas permitieron verificar que la aplicación cumple con los requisitos funcionales establecidos para las evidencias **GA4-220501096-AA1-EV01** y **GA4-220501096-AA1-EV02**.
+
+Se comprobó el correcto funcionamiento de los módulos de usuarios y productos, así como la comunicación entre el frontend, el backend y la base de datos.
+
+El proyecto demuestra la aplicación de conocimientos en desarrollo web, consumo de API REST, programación con Node.js, manejo de bases de datos MySQL y construcción de interfaces web.
+
+---
+

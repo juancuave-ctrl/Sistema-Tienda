@@ -1,0 +1,320 @@
+
+# MANUAL TÉCNICO
+
+## Sistema de Gestión de Tienda
+
+**Evidencia:**
+GA4-220501096-AA1-EV01 – API del Proyecto
+GA4-220501096-AA1-EV02 – Aplicación Web Funcional
+
+**Aprendiz:**
+Juan David Chávez Hurtado
+
+**Programa:**
+Análisis y Desarrollo de Software 
+
+**Instructor:**
+
+---
+
+**Fecha:**
+Julio 18 de 2026
+
+---
+
+# TABLA DE CONTENIDO
+
+1. Introducción
+2. Objetivos
+3. Descripción del Proyecto
+4. Tecnologías Utilizadas
+5. Arquitectura del Sistema
+6. Base de Datos
+7. Backend
+8. Frontend
+9. API REST
+10. Instalación del Proyecto
+11. Pruebas Realizadas
+12. Conclusiones
+
+---
+
+# 1. Introducción
+
+El presente manual técnico describe el desarrollo de la aplicación web denominada **Sistema de Gestión de Tienda**, construida como evidencia del programa de formación del SENA.
+
+El sistema permite administrar usuarios y productos mediante una arquitectura cliente-servidor utilizando una API REST desarrollada con Node.js y Express, una base de datos MySQL y un frontend desarrollado con HTML, CSS, Bootstrap y JavaScript.
+
+Este documento explica la estructura del proyecto, las tecnologías utilizadas, la configuración del entorno y el funcionamiento de cada componente.
+
+---
+
+# 2. Objetivos
+
+## Objetivo General
+
+Desarrollar una aplicación web funcional que permita administrar usuarios y productos mediante una API REST conectada a una base de datos MySQL.
+
+## Objetivos Específicos
+
+* Implementar una API REST utilizando Node.js y Express.
+* Diseñar una base de datos relacional en MySQL.
+* Construir una interfaz web para la gestión de usuarios y productos.
+* Implementar operaciones CRUD.
+* Validar el correcto funcionamiento del sistema mediante pruebas.
+
+---
+
+# 3. Descripción del Proyecto
+
+El Sistema de Gestión de Tienda es una aplicación web que permite registrar y administrar información de usuarios y productos.
+
+El sistema está dividido en dos módulos principales:
+
+* Gestión de Usuarios.
+* Gestión de Productos.
+
+Cada módulo permite realizar operaciones de consulta, creación y eliminación de registros mediante la comunicación entre el frontend y el backend.
+
+---
+
+# 4. Tecnologías Utilizadas
+
+| Tecnología         | Uso                    |
+| ------------------ | ---------------------- |
+| Node.js            | Servidor               |
+| Express            | API REST               |
+| MySQL              | Base de datos          |
+| HTML5              | Estructura             |
+| CSS3               | Estilos                |
+| Bootstrap 5        | Diseño                 |
+| JavaScript         | Lógica                 |
+| Visual Studio Code | Desarrollo             |
+| Live Server        | Ejecución del frontend |
+| Git (opcional)     | Control de versiones   |
+
+
+---
+
+# 5. Arquitectura del Sistema
+
+La aplicación fue desarrollada bajo una arquitectura **Cliente - Servidor**.
+
+```text
+                 USUARIO
+
+                    │
+                    ▼
+
+        Frontend (HTML, CSS, JS)
+
+                    │
+              Fetch API (HTTP)
+
+                    │
+                    ▼
+
+      Backend (Node.js + Express)
+
+                    │
+
+              Consultas SQL
+
+                    │
+                    ▼
+
+            Base de Datos MySQL
+```
+
+## Descripción de la arquitectura
+
+El usuario interactúa con el navegador mediante las páginas HTML del sistema. El frontend envía solicitudes HTTP al servidor utilizando la API Fetch. El servidor procesa las solicitudes mediante Express y realiza consultas a la base de datos MySQL. Finalmente, la respuesta es enviada nuevamente al frontend en formato JSON.
+
+---
+
+# 6. Base de Datos
+
+La aplicación utiliza una base de datos denominada **tienda**.
+
+Está compuesta por dos tablas principales.
+
+## Tabla Usuarios
+
+| Campo    | Tipo         | Descripción         |
+| -------- | ------------ | ------------------- |
+| id       | INT          | Identificador único |
+| nombre   | VARCHAR(100) | Nombre del usuario  |
+| correo   | VARCHAR(100) | Correo electrónico  |
+| password | VARCHAR(255) | Contraseña          |
+
+## Tabla Productos
+
+| Campo    | Tipo          | Descripción         |
+| -------- | ------------- | ------------------- |
+| id       | INT           | Identificador único |
+| nombre   | VARCHAR(100)  | Nombre del producto |
+| precio   | DECIMAL(10,2) | Precio del producto |
+| cantidad | INT           | Cantidad disponible |
+
+---
+
+# 7. Backend
+
+El backend fue desarrollado utilizando **Node.js** y **Express**.
+
+Su función principal consiste en recibir las solicitudes del frontend, procesarlas y realizar operaciones sobre la base de datos.
+
+## Estructura del Backend
+
+```text
+backend/
+
+│
+
+├── config/
+
+│     db.js
+
+│
+
+├── controllers/
+
+│     usuarioController.js
+
+│     productoController.js
+
+│
+
+├── routes/
+
+│     usuarioRoutes.js
+
+│     productoRoutes.js
+
+│
+
+├── package.json
+
+│
+
+└── server.js
+```
+
+## Funciones implementadas
+
+### Usuarios
+
+* Consultar usuarios.
+* Registrar usuarios.
+* Eliminar usuarios.
+
+### Productos
+
+* Consultar productos.
+* Registrar productos.
+* Eliminar productos.
+
+---
+
+# 8. Frontend
+
+El frontend fue desarrollado utilizando:
+
+* HTML5
+* CSS3
+* Bootstrap 5
+* JavaScript
+
+Se diseñaron tres páginas principales.
+
+## index.html
+
+Página principal del sistema.
+
+## usuarios.html
+
+Permite administrar los usuarios registrados.
+
+## productos.html
+
+Permite administrar los productos registrados.
+
+La comunicación con el backend se realiza mediante **Fetch API** utilizando el formato **JSON**.
+
+---
+
+# 9. API REST
+
+La API REST implementa los siguientes servicios.
+
+## Usuarios
+
+| Método | Ruta              | Función            |
+| ------ | ----------------- | ------------------ |
+| GET    | /api/usuarios     | Consultar usuarios |
+| POST   | /api/usuarios     | Registrar usuario  |
+| DELETE | /api/usuarios/:id | Eliminar usuario   |
+
+## Productos
+
+| Método | Ruta               | Función             |
+| ------ | ------------------ | ------------------- |
+| GET    | /api/productos     | Consultar productos |
+| POST   | /api/productos     | Registrar producto  |
+| DELETE | /api/productos/:id | Eliminar producto   |
+
+---
+
+# 10. Instalación del Proyecto
+
+Para ejecutar correctamente la aplicación se deben seguir los siguientes pasos:
+
+1. Instalar Node.js.
+2. Instalar MySQL.
+3. Crear la base de datos **tienda**.
+4. Importar el archivo `tienda.sql`.
+5. Abrir el proyecto en Visual Studio Code.
+6. Ejecutar en la terminal:
+
+```bash
+npm install
+```
+
+7. Iniciar el servidor:
+
+```bash
+node server.js
+```
+
+8. Ejecutar el frontend con Live Server.
+
+---
+
+# 11. Pruebas Realizadas
+
+Se realizaron pruebas funcionales sobre los módulos desarrollados.
+
+| Prueba              | Resultado |
+| ------------------- | --------- |
+| Registrar usuario   | Exitosa   |
+| Consultar usuarios  | Exitosa   |
+| Eliminar usuario    | Exitosa   |
+| Registrar producto  | Exitosa   |
+| Consultar productos | Exitosa   |
+| Eliminar producto   | Exitosa   |
+| Comunicación API    | Exitosa   |
+| Conexión MySQL      | Exitosa   |
+
+---
+
+# 12. Conclusiones
+
+Durante el desarrollo del proyecto se implementó una aplicación web funcional utilizando tecnologías modernas para el desarrollo web.
+
+Se logró establecer la comunicación entre el frontend y el backend mediante una API REST, permitiendo realizar operaciones CRUD sobre una base de datos MySQL.
+
+El proyecto fortaleció conocimientos relacionados con programación orientada a objetos, desarrollo de APIs, bases de datos relacionales y consumo de servicios web, cumpliendo los requerimientos establecidos en las evidencias **GA4-220501096-AA1-EV01** y **GA4-220501096-AA1-EV02**.
+
+---
+
+

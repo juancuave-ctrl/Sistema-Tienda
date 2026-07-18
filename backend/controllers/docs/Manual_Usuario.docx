@@ -1,0 +1,203 @@
+
+
+# MANUAL DE USUARIO
+
+## Sistema de Gestión de Tienda
+
+**Evidencia:**
+
+GA4-220501096-AA1-EV02 – Aplicación Web Funcional
+
+**Aprendiz:**
+
+Juan David Chávez Hurtado
+
+**Programa:**
+
+Análisis y Desarrollo de Software – SENA
+
+**Fecha:**
+
+Julio de 2026
+
+---
+
+# TABLA DE CONTENIDO
+
+1. Introducción
+2. Requisitos del Sistema
+3. Ingreso a la Aplicación
+4. Menú Principal
+5. Gestión de Usuarios
+6. Gestión de Productos
+7. Solución de Problemas
+8. Recomendaciones
+9. Conclusiones
+
+---
+
+# 1. Introducción
+
+El presente manual tiene como finalidad orientar al usuario en el uso del **Sistema de Gestión de Tienda**.
+
+La aplicación permite administrar usuarios y productos mediante una interfaz sencilla e intuitiva, facilitando el registro, consulta y eliminación de la información almacenada en la base de datos.
+
+---
+
+# 2. Requisitos del Sistema
+
+Para utilizar la aplicación es necesario contar con:
+
+* Sistema operativo Windows 10 o superior.
+* Node.js instalado.
+* MySQL Server.
+* Visual Studio Code (para desarrollo).
+* Navegador web (Google Chrome, Microsoft Edge o Mozilla Firefox).
+* Conexión local al servidor (`http://localhost:3000`).
+
+---
+
+# 3. Ingreso a la Aplicación
+
+1. Abrir Visual Studio Code.
+2. Ejecutar el servidor Node.js con el comando:
+
+```bash
+node server.js
+```
+
+3. Iniciar el frontend con Live Server.
+4. Abrir el navegador en:
+
+```text
+http://127.0.0.1:5500/frontend/index.html
+```
+
+Se mostrará la página principal del sistema.
+
+> **Sugerencia:** Inserta aquí una captura de la página principal.
+
+---
+
+# 4. Menú Principal
+
+La pantalla principal presenta dos opciones:
+
+* **Gestión de Usuarios:** permite administrar los usuarios registrados.
+* **Gestión de Productos:** permite administrar los productos de la tienda.
+
+Cada botón dirige al módulo correspondiente.
+
+> **Sugerencia:** Inserta aquí una captura del menú principal.
+
+---
+
+# 5. Gestión de Usuarios
+
+## Registrar un usuario
+
+1. Ingresar al módulo **Gestión de Usuarios**.
+2. Escribir:
+
+   * Nombre.
+   * Correo electrónico.
+   * Contraseña.
+3. Hacer clic en **Guardar Usuario**.
+4. El sistema mostrará el mensaje:
+
+```
+Usuario creado correctamente
+```
+
+El nuevo usuario aparecerá en la tabla.
+
+---
+
+## Consultar usuarios
+
+Al ingresar al módulo se visualizará automáticamente la lista de usuarios registrados.
+
+La tabla muestra:
+
+* ID
+* Nombre
+* Correo
+
+---
+
+## Eliminar un usuario
+
+1. Hacer clic en el botón **Eliminar**.
+2. Confirmar la acción.
+3. El registro desaparecerá de la tabla y será eliminado de la base de datos.
+
+> **Sugerencia:** Inserta aquí una captura del módulo de usuarios.
+
+---
+
+# 6. Gestión de Productos
+
+## Registrar un producto
+
+1. Ingresar al módulo **Gestión de Productos**.
+2. Escribir:
+
+   * Nombre del producto.
+   * Precio.
+   * Cantidad.
+3. Hacer clic en **Guardar Producto**.
+
+El sistema mostrará el mensaje:
+
+```
+Producto creado correctamente
+```
+
+---
+
+## Consultar productos
+
+La tabla mostrará automáticamente:
+
+* ID
+* Nombre
+* Precio
+* Cantidad
+
+---
+
+## Eliminar un producto
+
+1. Hacer clic en **Eliminar**.
+2. Confirmar la acción.
+3. El producto será eliminado de la base de datos.
+
+> **Sugerencia:** Inserta aquí una captura del módulo de productos.
+
+---
+
+# 7. Solución de Problemas
+
+| Problema               | Solución                                                       |
+| ---------------------- | -------------------------------------------------------------- |
+| No carga la aplicación | Verificar que el servidor Node.js esté ejecutándose.           |
+| No aparecen los datos  | Comprobar que MySQL esté iniciado y la base de datos exista.   |
+| Error de conexión      | Revisar el archivo `config/db.js` y las credenciales de MySQL. |
+| Live Server no abre    | Reiniciar Visual Studio Code o volver a iniciar Live Server.   |
+
+---
+
+# 8. Recomendaciones
+
+* No eliminar registros importantes sin verificar.
+* Mantener respaldos de la base de datos.
+* Utilizar datos válidos al registrar usuarios y productos.
+* Cerrar correctamente el servidor al finalizar las pruebas.
+
+---
+
+# 9. Conclusiones
+
+El Sistema de Gestión de Tienda ofrece una interfaz sencilla para administrar usuarios y productos. La comunicación entre el frontend, el backend y la base de datos permite realizar las operaciones de forma rápida y segura, cumpliendo con los objetivos de la evidencia del programa de formación.
+
+---
