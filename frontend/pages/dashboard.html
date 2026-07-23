@@ -7,7 +7,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
 <title>
 Dashboard Sistema Tienda
 </title>
@@ -25,7 +24,47 @@ rel="stylesheet">
 
 
 
-<div class="container mt-5">
+<div class="container mt-4">
+
+
+
+<!-- BARRA USUARIO -->
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+
+<div>
+
+<h5>
+👤 Usuario:
+<span id="nombreUsuario">
+</span>
+</h5>
+
+
+<h6>
+Rol:
+<span id="rolUsuario">
+</span>
+</h6>
+
+
+</div>
+
+
+
+<button 
+id="cerrarSesion"
+class="btn btn-danger">
+
+Cerrar sesión
+
+</button>
+
+
+</div>
+
+
 
 
 
@@ -40,9 +79,6 @@ rel="stylesheet">
 
 
 <div class="row g-4">
-
-
-
 
 
 
@@ -68,9 +104,6 @@ rel="stylesheet">
 </div>
 
 </div>
-
-
-
 
 
 
@@ -105,9 +138,6 @@ rel="stylesheet">
 
 
 
-
-
-
 <div class="col-md-3">
 
 <div class="card shadow text-center">
@@ -130,9 +160,6 @@ rel="stylesheet">
 </div>
 
 </div>
-
-
-
 
 
 
@@ -165,10 +192,6 @@ $0
 
 
 
-
-
-
-
 </div>
 
 
@@ -177,10 +200,7 @@ $0
 
 
 
-
 <div class="row mt-4">
-
-
 
 
 
@@ -222,8 +242,6 @@ Sin datos
 
 
 
-
-
 <div class="col-md-6">
 
 
@@ -254,10 +272,7 @@ Sin datos
 
 
 
-
-
 </div>
-
 
 
 
@@ -312,19 +327,31 @@ Cantidad
 
 
 </div>
+
+
+
+
+
+
+
 <div class="card shadow mt-5">
 
-    <div class="card-body">
 
-        <h3 class="text-center">
+<div class="card-body">
 
-            📈 Ventas por producto
 
-        </h3>
+<h3 class="text-center">
 
-        <canvas id="graficaVentas"></canvas>
+📈 Ventas por producto
 
-    </div>
+</h3>
+
+
+<canvas id="graficaVentas"></canvas>
+
+
+</div>
+
 
 </div>
 
@@ -404,8 +431,6 @@ Total
 
 
 
-
-
 </div>
 
 
@@ -413,6 +438,9 @@ Total
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="../js/auth.js"></script>
+
 <script src="../js/dashboard.js"></script>
 
 

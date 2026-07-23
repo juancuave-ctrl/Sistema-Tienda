@@ -1,9 +1,13 @@
 const usuarioModel = require("../models/usuarioModel");
 
+const bcrypt = require("bcrypt");
 
 
 
+
+// ===============================
 // Obtener usuarios
+// ===============================
 
 exports.obtenerUsuarios = (req, res) => {
 
@@ -32,36 +36,75 @@ exports.obtenerUsuarios = (req, res) => {
 
 
 
+// ===============================
 // Crear usuario
+// ===============================
 
-exports.crearUsuario = (req, res) => {
-
-
-    usuarioModel.crearUsuario(
-        req.body,
-
-        (error)=>{
+exports.crearUsuario = async (req, res) => {
 
 
-            if(error){
+    try {
 
-                return res.status(500).json(error);
+
+        const usuario = req.body;
+
+
+
+        // Encriptar contraseña
+
+        const passwordEncriptada = await bcrypt.hash(
+
+            usuario.password,
+
+            10
+
+        );
+
+
+
+        usuario.password = passwordEncriptada;
+
+
+
+
+
+        usuarioModel.crearUsuario(
+
+            usuario,
+
+            (error)=>{
+
+
+                if(error){
+
+                    return res.status(500).json(error);
+
+                }
+
+
+
+                res.json({
+
+                    mensaje:"Usuario creado correctamente"
+
+                });
+
+
 
             }
 
 
-
-            res.json({
-
-                mensaje:"Usuario creado correctamente"
-
-            });
+        );
 
 
 
-        }
+    } catch(error){
 
-    );
+
+        res.status(500).json(error);
+
+
+    }
 
 
 };
@@ -73,40 +116,85 @@ exports.crearUsuario = (req, res) => {
 
 
 
+
+// ===============================
 // Actualizar usuario
+// ===============================
 
-exports.actualizarUsuario = (req,res)=>{
-
-
-    usuarioModel.actualizarUsuario(
-
-        req.params.id,
-
-        req.body,
-
-        (error)=>{
+exports.actualizarUsuario = async (req,res)=>{
 
 
-            if(error){
+    try {
 
-                return res.status(500).json(error);
 
-            }
+        const usuario = req.body;
 
 
 
-            res.json({
 
-                mensaje:"Usuario actualizado correctamente"
+        // Si viene una nueva contraseña
 
-            });
+        if(usuario.password){
 
+
+            usuario.password = await bcrypt.hash(
+
+                usuario.password,
+
+                10
+
+            );
 
 
         }
 
 
-    );
+
+
+
+
+        usuarioModel.actualizarUsuario(
+
+
+            req.params.id,
+
+
+            usuario,
+
+
+            (error)=>{
+
+
+                if(error){
+
+                    return res.status(500).json(error);
+
+                }
+
+
+
+                res.json({
+
+                    mensaje:"Usuario actualizado correctamente"
+
+                });
+
+
+
+            }
+
+
+        );
+
+
+
+    } catch(error){
+
+
+        res.status(500).json(error);
+
+
+    }
 
 
 };
@@ -118,7 +206,10 @@ exports.actualizarUsuario = (req,res)=>{
 
 
 
+
+// ===============================
 // Eliminar usuario
+// ===============================
 
 exports.eliminarUsuario = (req,res)=>{
 

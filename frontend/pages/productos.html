@@ -1,108 +1,314 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Productos - Sistema Tienda
+</title>
+
+
+<link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+rel="stylesheet">
+
 
 </head>
+
+
 <body class="bg-light">
 
-<div class="container mt-5">
 
-    <div class="card shadow">
 
-        <div class="card-body">
 
-            <h1 class="text-center mb-4">
-                Gestión de Productos
-            </h1>
 
-            <form id="formProducto">
+<nav class="navbar navbar-dark bg-dark">
 
-                <div class="mb-3">
 
-                    <input
-                        type="text"
-                        id="nombre"
-                        class="form-control"
-                        placeholder="Nombre del producto"
-                        required>
+<div class="container">
 
-                </div>
 
-                <div class="mb-3">
+<span class="navbar-brand">
 
-                    <input
-                        type="number"
-                        id="precio"
-                        class="form-control"
-                        placeholder="Precio"
-                        required>
+📦 Gestión de Productos
 
-                </div>
+</span>
 
-                <div class="mb-3">
 
-                    <input
-                        type="number"
-                        id="cantidad"
-                        class="form-control"
-                        placeholder="Cantidad"
-                        required>
 
-                </div>
 
-                <button
-                    class="btn btn-success w-100">
 
-                    Guardar Producto
+<div>
 
-                </button>
 
-            </form>
+<span class="text-white me-3">
 
-        </div>
+👤 <span id="nombreUsuario"></span>
 
-    </div>
+</span>
 
-    <div class="card shadow mt-4">
 
-        <div class="card-body">
 
-            <h3>Lista de Productos</h3>
+<button 
+id="cerrarSesion"
+class="btn btn-danger btn-sm">
 
-            <table class="table table-striped">
+Salir
 
-                <thead>
+</button>
 
-                    <tr>
 
-<th>ID</th>
-<th>Nombre</th>
-<th>Precio</th>
-<th>Cantidad</th>
-<th>Acciones</th>
-
-</tr>
-
-                </thead>
-
-                <tbody id="tablaProductos">
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </div>
 
 </div>
 
+
+
+
+</div>
+
+
+</nav>
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+
+
+
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<h1 class="text-center mb-4">
+
+Gestión de Productos
+
+</h1>
+
+
+
+
+
+<form id="formProducto">
+
+
+
+
+
+<div class="mb-3">
+
+
+<input
+
+type="text"
+
+id="nombre"
+
+class="form-control"
+
+placeholder="Nombre del producto"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="mb-3">
+
+
+<input
+
+type="number"
+
+id="precio"
+
+class="form-control"
+
+placeholder="Precio"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="mb-3">
+
+
+<input
+
+type="number"
+
+id="cantidad"
+
+class="form-control"
+
+placeholder="Cantidad"
+
+required>
+
+
+</div>
+
+
+
+
+
+
+
+<button
+
+class="btn btn-success w-100">
+
+
+Guardar Producto
+
+
+</button>
+
+
+
+
+</form>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card shadow mt-4">
+
+
+<div class="card-body">
+
+
+<h3>
+
+Lista de Productos
+
+</h3>
+
+
+
+
+
+<table class="table table-striped">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+ID
+</th>
+
+
+<th>
+Nombre
+</th>
+
+
+<th>
+Precio
+</th>
+
+
+<th>
+Cantidad
+</th>
+
+
+<th>
+Acciones
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="tablaProductos">
+
+
+</tbody>
+
+
+
+
+</table>
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+<script src="../js/auth.js"></script>
+
 <script src="../js/productos.js"></script>
 
+
+
+
 </body>
+
 </html>

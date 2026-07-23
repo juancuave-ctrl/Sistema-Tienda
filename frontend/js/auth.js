@@ -1,19 +1,63 @@
-// Verificar sesión activa
-
-function verificarSesion(){
-
-
-    const usuario = localStorage.getItem("usuario");
+// ===============================
+// PROTEGER PÁGINAS
+// ===============================
 
 
-
-    if(!usuario){
-
-
-        window.location.href = "login.html";
+const usuario = localStorage.getItem("usuario");
 
 
-    }
+
+if(!usuario){
+
+
+    window.location.href = "../login.html";
+
+
+}
+
+
+
+
+// Obtener datos del usuario
+
+const datosUsuario = JSON.parse(usuario);
+
+
+
+
+// Mostrar nombre si existe
+
+const nombreUsuario = document.getElementById(
+    "nombreUsuario"
+);
+
+
+
+if(nombreUsuario){
+
+
+    nombreUsuario.textContent =
+    datosUsuario.nombre;
+
+
+}
+
+
+
+
+// Mostrar rol si existe
+
+const rolUsuario = document.getElementById(
+    "rolUsuario"
+);
+
+
+
+if(rolUsuario){
+
+
+    rolUsuario.textContent =
+    datosUsuario.rol;
 
 
 }
@@ -22,93 +66,35 @@ function verificarSesion(){
 
 
 
-// Obtener usuario conectado
 
-function obtenerUsuario(){
+// ===============================
+// CERRAR SESIÓN
+// ===============================
 
-
-    const usuario = localStorage.getItem("usuario");
-
-
-
-    if(usuario){
-
-
-        return JSON.parse(usuario);
-
-
-    }
-
-
-    return null;
-
-
-}
+const btnSalir = document.getElementById(
+    "cerrarSesion"
+);
 
 
 
+if(btnSalir){
 
 
-// Cerrar sesión
-
-function cerrarSesion(){
-
-
-    localStorage.removeItem("usuario");
+    btnSalir.addEventListener(
+    "click",
+    ()=>{
 
 
-    window.location.href = "login.html";
+        localStorage.removeItem(
+            "usuario"
+        );
 
 
-}
+        window.location.href =
+        "../login.html";
 
 
-
-
-
-// Verificar permisos por rol
-
-function verificarRol(){
-
-
-    const usuario = obtenerUsuario();
-
-
-
-    if(!usuario){
-
-        return;
-
-    }
-
-
-
-    const rol = usuario.rol;
-
-
-
-
-    // Si es vendedor ocultamos opciones administrativas
-
-    if(rol === "Vendedor"){
-
-
-
-        const opcionesAdmin = document.querySelectorAll(".admin");
-
-
-
-        opcionesAdmin.forEach((elemento)=>{
-
-
-            elemento.style.display = "none";
-
-
-        });
-
-
-    }
-
+    });
 
 
 }

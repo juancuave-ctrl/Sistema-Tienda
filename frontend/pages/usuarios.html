@@ -26,9 +26,8 @@ rel="stylesheet">
 
 
 
-
-
 <nav class="navbar navbar-dark bg-dark">
+
 
 <div class="container">
 
@@ -40,17 +39,36 @@ rel="stylesheet">
 </span>
 
 
-<a href="../index.html" class="btn btn-light btn-sm">
 
-Volver
 
-</a>
+<div>
+
+
+<span class="text-white me-3">
+
+👤 <span id="nombreUsuario"></span>
+
+</span>
+
+
+
+<button 
+id="cerrarSesion"
+class="btn btn-danger btn-sm">
+
+Salir
+
+</button>
 
 
 </div>
 
-</nav>
 
+
+</div>
+
+
+</nav>
 
 
 
@@ -88,11 +106,13 @@ Registrar Usuario
 
 <div class="mb-3">
 
+
 <label class="form-label">
 
 Nombre
 
 </label>
+
 
 
 <input
@@ -105,6 +125,7 @@ class="form-control"
 
 required>
 
+
 </div>
 
 
@@ -115,11 +136,13 @@ required>
 
 <div class="mb-3">
 
+
 <label class="form-label">
 
 Correo
 
 </label>
+
 
 
 <input
@@ -132,6 +155,7 @@ class="form-control"
 
 required>
 
+
 </div>
 
 
@@ -142,11 +166,13 @@ required>
 
 <div class="mb-3">
 
+
 <label class="form-label">
 
 Contraseña
 
 </label>
+
 
 
 <input
@@ -159,6 +185,7 @@ class="form-control"
 
 required>
 
+
 </div>
 
 
@@ -169,11 +196,13 @@ required>
 
 <div class="mb-3">
 
+
 <label class="form-label">
 
 Rol
 
 </label>
+
 
 
 <select id="rol" class="form-control">
@@ -191,6 +220,7 @@ Administrador
 Vendedor
 
 </option>
+
 
 
 </select>
@@ -254,6 +284,7 @@ Usuarios registrados
 
 <tr>
 
+
 <th>ID</th>
 
 <th>Nombre</th>
@@ -265,6 +296,7 @@ Usuarios registrados
 <th>Acciones</th>
 
 
+
 </tr>
 
 
@@ -273,10 +305,13 @@ Usuarios registrados
 
 
 
+
 <tbody id="tablaUsuarios">
 
 
 </tbody>
+
+
 
 
 </table>
@@ -293,7 +328,10 @@ Usuarios registrados
 
 
 
+
+
 </div>
+
 
 
 
@@ -303,32 +341,8 @@ Usuarios registrados
 
 <script src="../js/auth.js"></script>
 
-<script>
-
-verificarSesion();
-
-
-const usuario = obtenerUsuario();
-
-
-
-if(usuario.rol !== "Administrador"){
-
-
-    alert("No tienes permisos para entrar a esta sección");
-
-
-    window.location.href = "../index.html";
-
-
-}
-
-
-
-</script>
-
-
 <script src="../js/usuarios.js"></script>
+
 
 
 </body>

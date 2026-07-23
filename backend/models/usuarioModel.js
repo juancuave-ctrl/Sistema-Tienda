@@ -3,7 +3,9 @@ const conexion = require("../config/db");
 
 
 
+// ===============================
 // Obtener usuarios
+// ===============================
 
 const obtenerUsuarios = (callback) => {
 
@@ -26,14 +28,18 @@ const obtenerUsuarios = (callback) => {
 
 
 
+// ===============================
 // Crear usuario
+// ===============================
 
 const crearUsuario = (datos, callback) => {
 
 
     conexion.query(
 
+
         "INSERT INTO usuarios(nombre, correo, password, rol) VALUES(?,?,?,?)",
+
 
         [
 
@@ -47,7 +53,9 @@ const crearUsuario = (datos, callback) => {
 
         ],
 
+
         callback
+
 
     );
 
@@ -61,19 +69,45 @@ const crearUsuario = (datos, callback) => {
 
 
 
+
+// ===============================
 // Actualizar usuario
+// ===============================
 
 const actualizarUsuario = (id, datos, callback) => {
 
 
-    conexion.query(
+
+    let sql;
+
+    let valores;
 
 
-        "UPDATE usuarios SET nombre=?, correo=?, password=?, rol=? WHERE id=?",
 
 
 
-        [
+    // Si cambia contraseña
+
+    if(datos.password){
+
+
+
+        sql = `
+
+        UPDATE usuarios
+
+        SET nombre=?,
+            correo=?,
+            password=?,
+            rol=?
+
+        WHERE id=?
+
+        `;
+
+
+
+        valores = [
 
             datos.nombre,
 
@@ -85,14 +119,60 @@ const actualizarUsuario = (id, datos, callback) => {
 
             id
 
-        ],
+        ];
 
 
+
+
+    }else{
+
+
+
+        sql = `
+
+        UPDATE usuarios
+
+        SET nombre=?,
+            correo=?,
+            rol=?
+
+        WHERE id=?
+
+        `;
+
+
+
+        valores = [
+
+            datos.nombre,
+
+            datos.correo,
+
+            datos.rol,
+
+            id
+
+        ];
+
+
+
+    }
+
+
+
+
+
+
+    conexion.query(
+
+        sql,
+
+        valores,
 
         callback
 
-
     );
+
 
 
 };
@@ -105,7 +185,11 @@ const actualizarUsuario = (id, datos, callback) => {
 
 
 
+
+
+// ===============================
 // Eliminar usuario
+// ===============================
 
 const eliminarUsuario = (id, callback) => {
 

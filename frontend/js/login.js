@@ -1,44 +1,32 @@
-const API = "http://localhost:3000/api/login";
+const API_LOGIN = "http://localhost:3000/api/auth/login";
+
 
 
 const formulario = document.getElementById("formLogin");
 
-const mensaje = document.getElementById("mensaje");
 
 
-
-
-
-formulario.addEventListener("submit", async (e)=>{
+formulario.addEventListener(
+"submit",
+async(e)=>{
 
 
     e.preventDefault();
 
 
 
+    const correo = document.getElementById("correo").value;
 
-    const datos = {
-
-
-        correo:
-        document.getElementById("correo").value,
-
-
-        password:
-        document.getElementById("password").value
-
-
-    };
+    const password = document.getElementById("password").value;
 
 
 
 
 
-    try {
+    try{
 
 
-
-        const respuesta = await fetch(API, {
+        const respuesta = await fetch(API_LOGIN,{
 
 
             method:"POST",
@@ -53,8 +41,15 @@ formulario.addEventListener("submit", async (e)=>{
             },
 
 
-            body:JSON.stringify(datos)
+            body:JSON.stringify({
 
+
+                correo,
+
+                password
+
+
+            })
 
 
         });
@@ -63,77 +58,20 @@ formulario.addEventListener("submit", async (e)=>{
 
 
 
-
-        const resultado = await respuesta.json();
-
-
-
-
-
-        console.log(resultado);
+        const datos = await respuesta.json();
 
 
 
 
 
 
-        if(respuesta.ok){
+        if(!respuesta.ok){
 
 
-
-            // Guardar usuario conectado
-
-            localStorage.setItem(
-
-                "usuario",
-
-                JSON.stringify(resultado.usuario)
-
-            );
+            alert(datos.mensaje);
 
 
-
-
-            mensaje.innerHTML = `
-
-                <div class="alert alert-success">
-
-                    Bienvenido ${resultado.usuario.nombre}
-
-                </div>
-
-            `;
-
-
-
-
-
-
-            setTimeout(()=>{
-
-
-                window.location.href = "index.html";
-
-
-            },1000);
-
-
-
-
-
-        }else{
-
-
-
-            mensaje.innerHTML = `
-
-            <div class="alert alert-danger">
-
-                ${resultado.mensaje}
-
-            </div>
-
-            `;
+            return;
 
 
         }
@@ -142,28 +80,62 @@ formulario.addEventListener("submit", async (e)=>{
 
 
 
+
+        // Guardar sesión
+
+        localStorage.setItem(
+
+            "usuario",
+
+            JSON.stringify(datos.usuario)
+
+        );
+
+
+
+
+
+        alert(
+
+            "Bienvenido " + datos.usuario.nombre
+
+        );
+
+
+
+
+
+
+        // Ir al dashboard
+
+        window.location.href =
+
+        "pages/dashboard.html";
+
+
+
+
+
     }catch(error){
 
 
+        console.error(
 
-        console.error(error);
+            "Error login:",
+
+            error
+
+        );
 
 
-        mensaje.innerHTML = `
+        alert(
 
-        <div class="alert alert-danger">
+            "Error conectando con el servidor"
 
-            Error de conexión con el servidor
-
-        </div>
-
-        `;
-
+        );
 
 
     }
-
-
 
 
 

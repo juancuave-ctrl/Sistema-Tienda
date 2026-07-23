@@ -7,9 +7,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Factura</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+<title>
+Factura - Sistema Tienda
+</title>
+
+
+<link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+rel="stylesheet">
+
 
 <style>
 
@@ -18,6 +25,7 @@ body{
     background:#f5f5f5;
 
 }
+
 
 .factura{
 
@@ -35,6 +43,7 @@ body{
 
 }
 
+
 .encabezado{
 
     display:flex;
@@ -47,17 +56,20 @@ body{
 
 }
 
+
 .logo{
 
     font-size:35px;
 
 }
 
+
 .empresa{
 
     text-align:right;
 
 }
+
 
 .total{
 
@@ -69,6 +81,7 @@ body{
 
 }
 
+
 .footer{
 
     text-align:center;
@@ -79,69 +92,204 @@ body{
 
 }
 
+
+
 @media print{
 
-    .no-print{
 
-        display:none;
+.no-print{
 
-    }
-
-    body{
-
-        background:white;
-
-    }
-
-    .factura{
-
-        box-shadow:none;
-
-        border:none;
-
-    }
+    display:none;
 
 }
 
+
+body{
+
+    background:white;
+
+}
+
+
+.factura{
+
+    box-shadow:none;
+
+    border:none;
+
+}
+
+
+
+}
+
+
 </style>
+
 
 </head>
 
+
+
 <body>
 
-<div class="container mt-5">
 
-<div class="factura">
 
-<div class="encabezado">
+
+
+<nav class="navbar navbar-dark bg-dark no-print">
+
+
+<div class="container">
+
+
+<span class="navbar-brand">
+
+🧾 Factura Sistema Tienda
+
+</span>
+
+
+
+
 
 <div>
 
-<h1 class="logo">🏪 Sistema Tienda</h1>
 
-<p><strong>NIT:</strong> 900123456-7</p>
+<span class="text-white me-3">
 
-<p><strong>Dirección:</strong> Cali - Colombia</p>
+👤 <span id="nombreUsuario"></span>
 
-<p><strong>Teléfono:</strong> 300 123 4567</p>
+</span>
+
+
+
+<button
+
+id="cerrarSesion"
+
+class="btn btn-danger btn-sm">
+
+
+Salir
+
+
+</button>
+
+
 
 </div>
+
+
+
+</div>
+
+
+</nav>
+
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+
+
+
+<div class="factura">
+
+
+
+
+
+<div class="encabezado">
+
+
+
+
+
+<div>
+
+
+<h1 class="logo">
+
+🏪 Sistema Tienda
+
+</h1>
+
+
+<p>
+
+<strong>NIT:</strong> 900123456-7
+
+</p>
+
+
+<p>
+
+<strong>Dirección:</strong> Cali - Colombia
+
+</p>
+
+
+<p>
+
+<strong>Teléfono:</strong> 300 123 4567
+
+</p>
+
+
+</div>
+
+
+
+
+
+
 
 <div class="empresa">
 
-<h2>FACTURA</h2>
+
+<h2>
+
+FACTURA
+
+</h2>
+
 
 <h4 id="idVenta">
+
 FAC-000000
+
 </h4>
+
 
 <p id="fecha"></p>
 
-</div>
+
 
 </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
 
 <hr>
+
+
+
+
 
 <h5>
 
@@ -149,57 +297,124 @@ Cliente:
 
 <strong id="cliente"></strong>
 
+
 </h5>
+
+
+
+
 
 <br>
 
+
+
+
+
 <table class="table table-bordered">
+
+
 
 <thead class="table-dark">
 
+
 <tr>
 
-<th>Producto</th>
 
-<th>Cantidad</th>
+<th>
 
-<th>Total</th>
+Producto
+
+</th>
+
+
+<th>
+
+Cantidad
+
+</th>
+
+
+<th>
+
+Total
+
+</th>
+
+
 
 </tr>
+
 
 </thead>
 
+
+
+
 <tbody>
+
 
 <tr>
 
+
 <td id="producto"></td>
+
 
 <td id="cantidad"></td>
 
+
 <td id="total"></td>
+
+
 
 </tr>
 
+
 </tbody>
+
+
 
 </table>
 
+
+
+
+
+
+
+
 <div class="text-end">
 
+
 <h2 class="total">
+
 
 TOTAL:
 
 <span id="totalGeneral"></span>
 
+
 </h2>
+
+
 
 </div>
 
+
+
+
+
+
+
 <hr>
 
+
+
+
+
+
+
 <div class="footer">
+
 
 <h5>
 
@@ -207,15 +422,27 @@ TOTAL:
 
 </h5>
 
+
+
 <p>
 
 Software desarrollado por Juan David Chávez
 
 </p>
 
+
+
 </div>
 
+
+
+
+
+
+
+
 <div class="text-center mt-4 no-print">
+
 
 <button
 
@@ -223,9 +450,18 @@ class="btn btn-success"
 
 onclick="window.print()">
 
+
+
 🖨 Imprimir
 
+
+
 </button>
+
+
+
+
+
 
 <a
 
@@ -233,17 +469,44 @@ href="ventas.html"
 
 class="btn btn-secondary">
 
+
+
 ⬅ Volver
+
+
 
 </a>
 
-</div>
+
+
+
 
 </div>
 
+
+
+
+
+
+
 </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<script src="../js/auth.js"></script>
 
 <script src="../js/factura.js"></script>
+
+
 
 </body>
 
