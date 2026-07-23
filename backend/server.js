@@ -11,6 +11,7 @@ const clienteRoutes = require("./routes/clienteRoutes");
 const proveedorRoutes = require("./routes/proveedorRoutes");
 const entradaRoutes = require("./routes/entradaRoutes");
 const loginRoutes = require("./routes/loginRoutes");
+const reporteRoutes = require("./routes/reporteRoutes");
 const app = express();
 
 app.use(cors());
@@ -24,6 +25,7 @@ app.use("/api/clientes", clienteRoutes);
 app.use("/api/proveedores", proveedorRoutes);
 app.use("/api/entradas", entradaRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/reportes", reporteRoutes);
 app.get("/", (req, res) => {
     res.send("🚀 API Sistema Tienda funcionando correctamente");
 });
