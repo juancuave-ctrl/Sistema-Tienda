@@ -1,0 +1,210 @@
+/* ===========================
+   DASHBOARD - PARTE 1
+   =========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+.contenedor{
+    display:flex;
+    min-height:100vh;
+}
+
+/* ===========================
+   SIDEBAR
+   =========================== */
+
+.sidebar{
+    width:260px;
+    background:#212529;
+    color:#fff;
+    padding:20px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:40px;
+}
+
+.logo i{
+    font-size:32px;
+}
+
+.logo h2{
+    font-size:22px;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    margin-bottom:10px;
+}
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#fff;
+    text-decoration:none;
+    padding:12px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:#0d6efd;
+}
+
+.activo a{
+    background:#0d6efd;
+}
+
+/* ===========================
+   CONTENIDO
+   =========================== */
+
+.contenido{
+    flex:1;
+    padding:30px;
+}
+
+/* ===========================
+   TOPBAR
+   =========================== */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.topbar h1{
+    font-size:30px;
+}
+
+.usuario{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:18px;
+}
+
+.usuario i{
+    font-size:28px;
+}
+/* ===========================
+   DASHBOARD - PARTE 2
+   TARJETAS
+   =========================== */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+    border:none;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+.card i{
+    font-size:42px;
+    color:#0d6efd;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:18px;
+    color:#555;
+    margin-bottom:10px;
+}
+
+.card h2{
+    font-size:34px;
+    color:#212529;
+    font-weight:bold;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+@media(max-width:992px){
+
+    .sidebar{
+        width:220px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .contenedor{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:100%;
+    }
+
+    .sidebar ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+    }
+
+    .sidebar li{
+        margin-bottom:0;
+    }
+
+    .topbar{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .contenido{
+        padding:15px;
+    }
+
+    .topbar h1{
+        font-size:24px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h2{
+        font-size:28px;
+    }
+
+}

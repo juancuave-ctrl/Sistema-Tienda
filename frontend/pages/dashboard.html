@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>
+Dashboard Sistema Tienda
+</title>
+
+
+<link 
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" 
+rel="stylesheet">
+
+
+</head>
+
+
+<body class="bg-light">
+
+
+
+<div class="container mt-5">
+
+
+
+<h1 class="text-center mb-5">
+
+📊 Dashboard Sistema Tienda
+
+</h1>
+
+
+
+
+
+<div class="row g-4">
+
+
+
+
+
+
+<div class="col-md-3">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+
+<h5>
+📦 Productos
+</h5>
+
+
+<h2 id="productos">
+0
+</h2>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-3">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+
+<h5>
+🏬 Inventario
+</h5>
+
+
+<h2 id="inventario">
+0
+</h2>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-3">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+
+<h5>
+🛒 Ventas
+</h5>
+
+
+<h2 id="ventas">
+0
+</h2>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="col-md-3">
+
+<div class="card shadow text-center">
+
+<div class="card-body">
+
+
+<h5>
+💰 Ingresos
+</h5>
+
+
+<h2 id="ingresos">
+$0
+</h2>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="row mt-4">
+
+
+
+
+
+<div class="col-md-6">
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<h4>
+🏆 Producto más vendido
+</h4>
+
+
+<h3 id="productoTop">
+Sin datos
+</h3>
+
+
+<p id="cantidadTop">
+
+</p>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="col-md-6">
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<h4>
+📅 Ventas de hoy
+</h4>
+
+
+<h2 id="ventasHoy">
+0
+</h2>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="card shadow mt-5">
+
+
+<div class="card-body">
+
+
+<h3>
+⚠️ Productos con poco stock
+</h3>
+
+
+
+<table class="table table-striped">
+
+
+<thead>
+
+<tr>
+
+<th>
+Producto
+</th>
+
+<th>
+Cantidad
+</th>
+
+
+</tr>
+
+</thead>
+
+
+<tbody id="tablaStock">
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+<div class="card shadow mt-5">
+
+    <div class="card-body">
+
+        <h3 class="text-center">
+
+            📈 Ventas por producto
+
+        </h3>
+
+        <canvas id="graficaVentas"></canvas>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+<div class="card shadow mt-5">
+
+
+<div class="card-body">
+
+
+<h3>
+🛒 Últimas ventas
+</h3>
+
+
+
+<table class="table table-striped">
+
+
+<thead>
+
+
+<tr>
+
+<th>
+Cliente
+</th>
+
+
+<th>
+Producto
+</th>
+
+
+<th>
+Cantidad
+</th>
+
+
+<th>
+Total
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+<tbody id="tablaVentas">
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/dashboard.js"></script>
+
+
+</body>
+
+</html>

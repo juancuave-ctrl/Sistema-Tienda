@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión de Ventas</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body class="bg-light">
+
+
+<div class="container mt-5">
+
+
+    <div class="card shadow">
+
+
+        <div class="card-body">
+
+
+            <h2 class="text-center mb-4">
+                Gestión de Ventas
+            </h2>
+
+
+
+            <form id="formVenta">
+
+
+                <!-- CLIENTE -->
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Cliente
+                    </label>
+
+
+                    <select
+                        id="cliente"
+                        class="form-control"
+                        required>
+
+
+                        <option value="">
+                            Seleccione un cliente
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+
+
+                <!-- PRODUCTO -->
+
+                <div class="mb-3">
+
+
+                    <label class="form-label">
+                        Producto
+                    </label>
+
+
+                    <select
+                        id="producto"
+                        class="form-control"
+                        required>
+
+
+                        <option value="">
+                            Seleccione un producto
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+
+
+
+                <!-- PRECIO -->
+
+                <div class="mb-3">
+
+
+                    <label class="form-label">
+                        Precio
+                    </label>
+
+
+                    <input
+
+                        type="number"
+
+                        id="precio"
+
+                        class="form-control"
+
+                        readonly>
+
+
+                </div>
+
+
+
+
+
+                <!-- STOCK -->
+
+                <div class="mb-3">
+
+
+                    <label class="form-label">
+                        Stock disponible
+                    </label>
+
+
+                    <input
+
+                        type="number"
+
+                        id="stock"
+
+                        class="form-control"
+
+                        readonly>
+
+
+                </div>
+
+
+
+
+
+
+                <!-- CANTIDAD -->
+
+                <div class="mb-3">
+
+
+                    <label class="form-label">
+                        Cantidad
+                    </label>
+
+
+                    <input
+
+                        type="number"
+
+                        id="cantidad"
+
+                        class="form-control"
+
+                        min="1"
+
+                        required>
+
+
+                </div>
+
+
+
+
+
+
+                <!-- TOTAL -->
+
+                <div class="mb-3">
+
+
+                    <label class="form-label">
+                        Total
+                    </label>
+
+
+                    <input
+
+                        type="number"
+
+                        id="total"
+
+                        class="form-control"
+
+                        readonly>
+
+
+                </div>
+
+
+
+
+
+                <button
+                    class="btn btn-success w-100">
+
+
+                    Registrar Venta
+
+
+                </button>
+
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <div class="card shadow mt-4">
+
+
+        <div class="card-body">
+
+
+            <h3>
+                Historial de Ventas
+            </h3>
+
+
+
+            <table class="table table-striped">
+
+
+                <thead>
+
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Cliente</th>
+
+                        <th>Producto</th>
+
+                        <th>Cantidad</th>
+
+                        <th>Total</th>
+
+                        <th>Fecha</th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="tablaVentas">
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+<script src="../js/ventas.js"></script>
+
+
+</body>
+
+
+</html>
