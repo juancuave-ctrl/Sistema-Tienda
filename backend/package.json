@@ -1,14 +1,33 @@
 {
   "name": "sistema-tienda",
   "version": "1.0.0",
-  "description": "Sistema de Gestión de Tienda",
-  "main": "server.js",
+  "description": "Sistema de Gestion de Tienda",
+  "main": "main.js",
+
   "scripts": {
-    "start": "node server.js"
+    "start": "electron main.js",
+    "build": "electron-builder"
   },
+
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mysql2": "^3.14.3"
-  }
+  },
+
+  "devDependencies": {
+    "electron": "^43.1.1",
+    "electron-builder": "^26.15.3"
+  },
+
+  "build": {
+    "appId": "com.sistematienda.app",
+    "productName": "Sistema-Tienda",
+    "win": {
+      "target": "nsis"
+    }
+  },
+
+  "type": "commonjs"
 }
+  

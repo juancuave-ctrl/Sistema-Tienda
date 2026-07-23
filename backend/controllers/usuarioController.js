@@ -1,50 +1,155 @@
-const conexion = require("../config/db");
+const usuarioModel = require("../models/usuarioModel");
+
+
+
 
 // Obtener usuarios
+
 exports.obtenerUsuarios = (req, res) => {
-    conexion.query("SELECT * FROM usuarios", (error, resultados) => {
-        if (error) return res.status(500).json(error);
+
+
+    usuarioModel.obtenerUsuarios((error, resultados)=>{
+
+
+        if(error){
+
+            return res.status(500).json(error);
+
+        }
+
+
         res.json(resultados);
+
+
     });
+
+
 };
+
+
+
+
+
+
 
 // Crear usuario
+
 exports.crearUsuario = (req, res) => {
-    const { nombre, correo, password } = req.body;
 
-    conexion.query(
-        "INSERT INTO usuarios(nombre, correo, password) VALUES (?, ?, ?)",
-        [nombre, correo, password],
-        (error) => {
-            if (error) {
+
+    usuarioModel.crearUsuario(
+        req.body,
+
+        (error)=>{
+
+
+            if(error){
+
                 return res.status(500).json(error);
+
             }
 
+
+
             res.json({
-                mensaje: "Usuario creado correctamente"
+
+                mensaje:"Usuario creado correctamente"
+
             });
+
+
+
         }
+
     );
+
+
 };
-// Eliminar usuario
-exports.eliminarUsuario = (req, res) => {
 
-    const id = req.params.id;
 
-    conexion.query(
-        "DELETE FROM usuarios WHERE id = ?",
-        [id],
-        (error) => {
 
-            if (error) {
+
+
+
+
+
+// Actualizar usuario
+
+exports.actualizarUsuario = (req,res)=>{
+
+
+    usuarioModel.actualizarUsuario(
+
+        req.params.id,
+
+        req.body,
+
+        (error)=>{
+
+
+            if(error){
+
                 return res.status(500).json(error);
+
             }
 
+
+
             res.json({
-                mensaje: "Usuario eliminado correctamente"
+
+                mensaje:"Usuario actualizado correctamente"
+
             });
 
+
+
         }
+
+
     );
+
+
+};
+
+
+
+
+
+
+
+
+// Eliminar usuario
+
+exports.eliminarUsuario = (req,res)=>{
+
+
+    usuarioModel.eliminarUsuario(
+
+        req.params.id,
+
+        (error)=>{
+
+
+            if(error){
+
+                return res.status(500).json(error);
+
+            }
+
+
+
+            res.json({
+
+                mensaje:"Usuario eliminado correctamente"
+
+            });
+
+
+
+        }
+
+
+    );
+
 
 };
