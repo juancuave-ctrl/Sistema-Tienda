@@ -1,5 +1,7 @@
 const API_REPORTES = "http://localhost:3000/api/reportes";
 
+const API_EXPORTAR = "http://localhost:3000/api/exportar";
+
 
 // Elementos HTML
 
@@ -11,10 +13,16 @@ const hasta = document.getElementById("hasta");
 
 const btnBuscar = document.getElementById("btnBuscar");
 
+const btnPDF = document.getElementById("btnPDF");
+
+const btnExcel = document.getElementById("btnExcel");
 
 
 
-// Cargar reportes
+
+// ===============================
+// CARGAR REPORTES
+// ===============================
 
 async function cargarReportes(url = API_REPORTES) {
 
@@ -49,9 +57,13 @@ async function cargarReportes(url = API_REPORTES) {
 
                 <td>${venta.cantidad}</td>
 
-                <td>$ ${Number(venta.total).toLocaleString("es-CO")}</td>
+                <td>
+                    $ ${Number(venta.total).toLocaleString("es-CO")}
+                </td>
 
-                <td>${venta.fecha ?? ""}</td>
+                <td>
+                    ${venta.fecha ?? ""}
+                </td>
 
 
             </tr>
@@ -84,7 +96,9 @@ async function cargarReportes(url = API_REPORTES) {
 
 
 
-// Buscar por fechas
+// ===============================
+// BUSCAR POR FECHAS
+// ===============================
 
 btnBuscar.addEventListener("click",()=>{
 
@@ -110,6 +124,29 @@ btnBuscar.addEventListener("click",()=>{
     }
 
 
+});
+
+
+
+
+
+
+
+// ===============================
+// EXPORTAR PDF
+// ===============================
+
+btnPDF.addEventListener("click",()=>{
+
+
+    window.open(
+
+        `${API_EXPORTAR}/pdf`,
+
+        "_blank"
+
+    );
+
 
 });
 
@@ -118,6 +155,33 @@ btnBuscar.addEventListener("click",()=>{
 
 
 
-// Inicio
+
+// ===============================
+// EXPORTAR EXCEL
+// ===============================
+
+btnExcel.addEventListener("click",()=>{
+
+
+    window.open(
+
+        `${API_EXPORTAR}/excel`,
+
+        "_blank"
+
+    );
+
+
+});
+
+
+
+
+
+
+
+// ===============================
+// INICIO
+// ===============================
 
 cargarReportes();

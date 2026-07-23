@@ -3,23 +3,21 @@
   "version": "1.0.0",
   "description": "Sistema de Gestion de Tienda",
   "main": "main.js",
-
   "scripts": {
     "start": "electron main.js",
     "build": "electron-builder"
   },
-
   "dependencies": {
     "cors": "^2.8.5",
+    "exceljs": "^4.4.0",
     "express": "^4.19.2",
-    "mysql2": "^3.14.3"
+    "mysql2": "^3.14.3",
+    "pdfkit": "^0.19.1"
   },
-
   "devDependencies": {
     "electron": "^43.1.1",
     "electron-builder": "^26.15.3"
   },
-
   "build": {
     "appId": "com.sistematienda.app",
     "productName": "Sistema-Tienda",
@@ -27,7 +25,5 @@
       "target": "nsis"
     }
   },
-
   "type": "commonjs"
 }
-  
