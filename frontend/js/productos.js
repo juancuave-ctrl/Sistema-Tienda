@@ -1,29 +1,65 @@
 const API = "http://localhost:3000/api/productos";
-console.log("productos.js cargado correctamente");
 
-const tabla = document.getElementById("tablaProductos");
+
+// Elementos HTML
+
 const formulario = document.getElementById("formProducto");
+const tablaProductos = document.getElementById("tablaProductos");
 
 
 
-// Cargar productos
+// ===============================
+// OBTENER TOKEN
+// ===============================
 
-async function cargarProductos() {
+function obtenerToken(){
 
-    try {
+    return localStorage.getItem("token");
 
-        const respuesta = await fetch(API);
+}
+
+
+
+// ===============================
+// CARGAR PRODUCTOS
+// ===============================
+
+async function cargarProductos(){
+
+
+    try{
+
+
+        const respuesta = await fetch(API, {
+
+
+            headers:{
+
+
+                "Authorization":"Bearer " + obtenerToken()
+
+
+            }
+
+
+        });
+
+
 
         const productos = await respuesta.json();
 
 
-        tabla.innerHTML = "";
+
+        tablaProductos.innerHTML = "";
+
 
 
         productos.forEach(producto => {
 
 
-            tabla.innerHTML += `
+
+            tablaProductos.innerHTML += `
+
 
             <tr>
 
@@ -31,7 +67,7 @@ async function cargarProductos() {
 
                 <td>${producto.nombre}</td>
 
-                <td>$${producto.precio}</td>
+                <td>$ ${Number(producto.precio).toLocaleString("es-CO")}</td>
 
                 <td>${producto.cantidad}</td>
 
@@ -39,21 +75,13 @@ async function cargarProductos() {
                 <td>
 
 
-                    <button 
-                        class="btn btn-warning btn-sm"
-                        onclick="editarProducto(${producto.id})">
-
-                        Editar
-
-                    </button>
-
-
-
                     <button
-                        class="btn btn-danger btn-sm"
-                        onclick="eliminarProducto(${producto.id})">
 
-                        Eliminar
+                    class="btn btn-danger btn-sm"
+
+                    onclick="eliminarProducto(${producto.id})">
+
+                    Eliminar
 
                     </button>
 
@@ -63,16 +91,21 @@ async function cargarProductos() {
 
             </tr>
 
+
             `;
 
 
         });
 
 
-    } catch(error) {
+
+    }catch(error){
 
 
-        console.error("Error al cargar productos:", error);
+        console.error(
+            "Error cargando productos:",
+            error
+        );
 
 
     }
@@ -83,9 +116,14 @@ async function cargarProductos() {
 
 
 
-// Crear producto
 
-formulario.addEventListener("submit", async (e)=>{
+
+// ===============================
+// CREAR PRODUCTO
+// ===============================
+
+
+formulario.addEventListener("submit", async(e)=>{
 
 
     e.preventDefault();
@@ -95,16 +133,17 @@ formulario.addEventListener("submit", async (e)=>{
     const producto = {
 
 
-        nombre: document.getElementById("nombre").value,
+        nombre:document.getElementById("nombre").value,
 
 
-        precio: document.getElementById("precio").value,
+        precio:document.getElementById("precio").value,
 
 
-        cantidad: document.getElementById("cantidad").value
+        cantidad:document.getElementById("cantidad").value
 
 
     };
+
 
 
 
@@ -117,7 +156,10 @@ formulario.addEventListener("submit", async (e)=>{
         headers:{
 
 
-            "Content-Type":"application/json"
+            "Content-Type":"application/json",
+
+
+            "Authorization":"Bearer " + obtenerToken()
 
 
         },
@@ -131,16 +173,20 @@ formulario.addEventListener("submit", async (e)=>{
 
 
 
-    const datos = await respuesta.json();
+
+    const resultado = await respuesta.json();
 
 
 
-    alert(datos.mensaje);
+    console.log(resultado);
+
+
+
+    alert(resultado.mensaje);
 
 
 
     formulario.reset();
-
 
 
     cargarProductos();
@@ -153,55 +199,59 @@ formulario.addEventListener("submit", async (e)=>{
 
 
 
-// Eliminar producto
+
+
+// ===============================
+// ELIMINAR PRODUCTO
+// ===============================
+
 
 async function eliminarProducto(id){
 
 
 
-    if(!confirm("¿Desea eliminar este producto?")){
+    if(!confirm("¿Eliminar producto?")){
+
 
         return;
 
-    }
-
-
-
-    try{
-
-
-        const respuesta = await fetch(`${API}/${id}`,{
-
-
-            method:"DELETE"
-
-
-        });
-
-
-
-        const datos = await respuesta.json();
-
-
-
-        alert(datos.mensaje);
-
-
-
-        cargarProductos();
-
-
-
-    }catch(error){
-
-
-        console.error(error);
-
-
-        alert("Error al eliminar producto");
-
 
     }
+
+
+
+
+    const respuesta = await fetch(`${API}/${id}`,{
+
+
+        method:"DELETE",
+
+
+        headers:{
+
+
+            "Authorization":"Bearer " + obtenerToken()
+
+
+        }
+
+
+
+    });
+
+
+
+
+    const resultado = await respuesta.json();
+
+
+
+    alert(resultado.mensaje);
+
+
+
+    cargarProductos();
+
 
 
 }
@@ -211,104 +261,6 @@ async function eliminarProducto(id){
 
 
 
-
-// Editar producto
-
-async function editarProducto(id){
-
-
-
-    const nombre = prompt("Nuevo nombre del producto:");
-
-    const precio = prompt("Nuevo precio:");
-
-    const cantidad = prompt("Nueva cantidad:");
-
-
-
-    if(!nombre || !precio || !cantidad){
-
-        return;
-
-    }
-
-
-
-
-    const producto = {
-
-
-        nombre,
-
-        precio,
-
-        cantidad
-
-
-    };
-
-
-
-
-    try{
-
-
-        const respuesta = await fetch(`${API}/${id}`,{
-
-
-            method:"PUT",
-
-
-            headers:{
-
-
-                "Content-Type":"application/json"
-
-
-            },
-
-
-            body:JSON.stringify(producto)
-
-
-
-        });
-
-
-
-
-        const datos = await respuesta.json();
-
-
-
-
-        alert(datos.mensaje);
-
-
-
-
-        cargarProductos();
-
-
-
-    }catch(error){
-
-
-        console.error(error);
-
-
-        alert("Error al editar producto");
-
-
-    }
-
-
-
-}
-
-
-
-
-// Iniciar
+// INICIO
 
 cargarProductos();

@@ -2,23 +2,63 @@ const express = require("express");
 
 const router = express.Router();
 
+
 const productoController = require("../controllers/productoController");
 
 
-// Obtener productos
-router.get("/", productoController.obtenerProductos);
+const verificarToken = require("../middleware/authMiddleware");
 
 
-// Crear producto
-router.post("/", productoController.crearProducto);
 
 
-// Eliminar producto
-router.delete("/:id", productoController.eliminarProducto);
+
+router.get(
+
+"/",
+
+verificarToken,
+
+productoController.obtenerProductos
+
+);
 
 
-// Actualizar producto
-router.put("/:id", productoController.actualizarProducto);
+
+router.post(
+
+"/",
+
+verificarToken,
+
+productoController.crearProducto
+
+);
+
+
+
+router.put(
+
+"/:id",
+
+verificarToken,
+
+productoController.actualizarProducto
+
+);
+
+
+
+router.delete(
+
+"/:id",
+
+verificarToken,
+
+productoController.eliminarProducto
+
+);
+
+
 
 
 module.exports = router;

@@ -1,7 +1,12 @@
 const productoModel = require("../models/productoModel");
 
+const auditoriaController = require("./auditoriaController");
+
+
+
 
 // Obtener productos
+
 exports.obtenerProductos = (req, res) => {
 
 
@@ -26,75 +31,15 @@ exports.obtenerProductos = (req, res) => {
 
 
 
+
+
+
 // Crear producto
+
 exports.crearProducto = (req, res) => {
 
 
-    productoModel.crearProducto(req.body, (error) => {
-
-
-        if (error) {
-
-            return res.status(500).json(error);
-
-        }
-
-
-        res.json({
-
-            mensaje: "Producto creado correctamente"
-
-        });
-
-
-    });
-
-
-};
-
-
-
-
-
-// Eliminar producto
-exports.eliminarProducto = (req, res) => {
-
-
-    productoModel.eliminarProducto(req.params.id, (error) => {
-
-
-        if (error) {
-
-            return res.status(500).json(error);
-
-        }
-
-
-        res.json({
-
-            mensaje: "Producto eliminado correctamente"
-
-        });
-
-
-    });
-
-
-};
-
-
-
-
-
-
-
-// Actualizar producto
-exports.actualizarProducto = (req, res) => {
-
-
-    productoModel.actualizarProducto(
-
-        req.params.id,
+    productoModel.crearProducto(
 
         req.body,
 
@@ -103,11 +48,154 @@ exports.actualizarProducto = (req, res) => {
 
             if (error) {
 
+                return res.status(500).json(error);
+
+            }
+
+
+
+            // Registrar auditoría
+
+            auditoriaController.registrarAccion(
+
+                req,
+
+                "CREAR",
+
+                "PRODUCTOS",
+
+                "Creó el producto: " + req.body.nombre
+
+            );
+
+
+
+
+            res.json({
+
+                mensaje: "Producto creado correctamente"
+
+            });
+
+
+
+        }
+
+
+    );
+
+
+};
+
+
+
+
+
+
+
+
+// Eliminar producto
+
+exports.eliminarProducto = (req, res) => {
+
+
+
+    productoModel.eliminarProducto(
+
+        req.params.id,
+
+        (error) => {
+
+
+            if (error) {
 
                 return res.status(500).json(error);
 
+            }
+
+
+
+            // Registrar auditoría
+
+            auditoriaController.registrarAccion(
+
+                req,
+
+                "ELIMINAR",
+
+                "PRODUCTOS",
+
+                "Eliminó producto ID: " + req.params.id
+
+            );
+
+
+
+
+            res.json({
+
+                mensaje: "Producto eliminado correctamente"
+
+            });
+
+
+
+        }
+
+
+    );
+
+
+
+};
+
+
+
+
+
+
+
+
+// Actualizar producto
+
+exports.actualizarProducto = (req, res) => {
+
+
+
+    productoModel.actualizarProducto(
+
+        req.params.id,
+
+        req.body,
+
+
+        (error) => {
+
+
+
+            if (error) {
+
+                return res.status(500).json(error);
 
             }
+
+
+
+
+            // Registrar auditoría
+
+            auditoriaController.registrarAccion(
+
+                req,
+
+                "ACTUALIZAR",
+
+                "PRODUCTOS",
+
+                "Actualizó producto ID: " + req.params.id
+
+            );
+
 
 
 
@@ -118,10 +206,13 @@ exports.actualizarProducto = (req, res) => {
             });
 
 
+
         }
 
 
+
     );
+
 
 
 };

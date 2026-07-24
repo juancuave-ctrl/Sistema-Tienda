@@ -14,6 +14,7 @@ const loginRoutes = require("./routes/loginRoutes");
 const reporteRoutes = require("./routes/reporteRoutes");
 const exportarRoutes = require("./routes/exportarRoutes");
 const authRoutes = require("./routes/authRoutes");
+const auditoriaRoutes = require("./routes/auditoriaRoutes");
 const app = express();
 
 app.use(cors());
@@ -30,6 +31,7 @@ app.use("/api/login", loginRoutes);
 app.use("/api/reportes", reporteRoutes);
 app.use("/api/exportar", exportarRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/auditoria", auditoriaRoutes);
 app.get("/", (req, res) => {
     res.send("🚀 API Sistema Tienda funcionando correctamente");
 });

@@ -1,6 +1,9 @@
 const usuarioModel = require("../models/usuarioModel");
 
+const auditoriaController = require("./auditoriaController");
+
 const bcrypt = require("bcrypt");
+
 
 
 
@@ -36,6 +39,7 @@ exports.obtenerUsuarios = (req, res) => {
 
 
 
+
 // ===============================
 // Crear usuario
 // ===============================
@@ -50,19 +54,13 @@ exports.crearUsuario = async (req, res) => {
 
 
 
-        // Encriptar contraseña
-
-        const passwordEncriptada = await bcrypt.hash(
+        usuario.password = await bcrypt.hash(
 
             usuario.password,
 
             10
 
         );
-
-
-
-        usuario.password = passwordEncriptada;
 
 
 
@@ -80,6 +78,27 @@ exports.crearUsuario = async (req, res) => {
                     return res.status(500).json(error);
 
                 }
+
+
+
+
+
+                // Auditoría
+
+                auditoriaController.registrarAccion(
+
+                    req,
+
+                    "CREAR",
+
+                    "USUARIOS",
+
+                    "Creó el usuario: " + usuario.nombre
+
+                );
+
+
+
 
 
 
@@ -132,8 +151,6 @@ exports.actualizarUsuario = async (req,res)=>{
 
 
 
-        // Si viene una nueva contraseña
-
         if(usuario.password){
 
 
@@ -170,6 +187,27 @@ exports.actualizarUsuario = async (req,res)=>{
                     return res.status(500).json(error);
 
                 }
+
+
+
+
+
+                // Auditoría
+
+                auditoriaController.registrarAccion(
+
+                    req,
+
+                    "ACTUALIZAR",
+
+                    "USUARIOS",
+
+                    "Actualizó usuario ID: " + req.params.id
+
+                );
+
+
+
 
 
 
@@ -218,6 +256,7 @@ exports.eliminarUsuario = (req,res)=>{
 
         req.params.id,
 
+
         (error)=>{
 
 
@@ -226,6 +265,29 @@ exports.eliminarUsuario = (req,res)=>{
                 return res.status(500).json(error);
 
             }
+
+
+
+
+
+
+            // Auditoría
+
+            auditoriaController.registrarAccion(
+
+                req,
+
+                "ELIMINAR",
+
+                "USUARIOS",
+
+                "Eliminó usuario ID: " + req.params.id
+
+            );
+
+
+
+
 
 
 

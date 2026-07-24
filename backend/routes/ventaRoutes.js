@@ -1,15 +1,43 @@
 const express = require("express");
+
 const router = express.Router();
+
 
 const ventaController = require("../controllers/ventaController");
 
-// Obtener todas las ventas
-router.get("/", ventaController.obtenerVentas);
 
-// Obtener una venta por ID
-router.get("/:id", ventaController.obtenerVentaPorId);
+const verificarToken = require("../middleware/authMiddleware");
 
-// Registrar una venta
-router.post("/", ventaController.crearVenta);
+
+
+
+
+router.get(
+
+"/",
+
+verificarToken,
+
+ventaController.obtenerVentas
+
+);
+
+
+
+
+
+router.post(
+
+"/",
+
+verificarToken,
+
+ventaController.crearVenta
+
+);
+
+
+
+
 
 module.exports = router;

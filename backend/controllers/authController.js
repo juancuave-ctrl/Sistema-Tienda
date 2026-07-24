@@ -2,17 +2,19 @@ const conexion = require("../config/db");
 
 const bcrypt = require("bcrypt");
 
+const jwt = require("jsonwebtoken");
+
+require("dotenv").config();
 
 
 
-// ===============================
+
 // LOGIN
-// ===============================
 
-exports.login = (req, res) => {
+exports.login = (req,res)=>{
 
 
-    const { correo, password } = req.body;
+    const {correo,password}=req.body;
 
 
 
@@ -20,13 +22,9 @@ exports.login = (req, res) => {
 
         "SELECT * FROM usuarios WHERE correo=?",
 
-        [
+        [correo],
 
-            correo
-
-        ],
-
-        async(error, resultado)=>{
+        async(error,resultados)=>{
 
 
             if(error){
@@ -37,8 +35,7 @@ exports.login = (req, res) => {
 
 
 
-            if(resultado.length === 0){
-
+            if(resultados.length===0){
 
                 return res.status(401).json({
 
@@ -46,17 +43,16 @@ exports.login = (req, res) => {
 
                 });
 
-
             }
 
 
 
-            const usuario = resultado[0];
+            const usuario = resultados[0];
 
 
 
 
-            const contraseñaCorrecta = await bcrypt.compare(
+            const passwordCorrecta = await bcrypt.compare(
 
                 password,
 
@@ -67,9 +63,7 @@ exports.login = (req, res) => {
 
 
 
-
-            if(!contraseñaCorrecta){
-
+            if(!passwordCorrecta){
 
                 return res.status(401).json({
 
@@ -77,8 +71,40 @@ exports.login = (req, res) => {
 
                 });
 
-
             }
+
+
+
+
+
+
+
+            const token = jwt.sign(
+
+                {
+
+                    id:usuario.id,
+
+                    nombre:usuario.nombre,
+
+                    correo:usuario.correo,
+
+                    rol:usuario.rol
+
+
+                },
+
+                process.env.JWT_SECRET,
+
+                {
+
+                    expiresIn:"8h"
+
+                }
+
+
+            );
+
 
 
 
@@ -89,16 +115,16 @@ exports.login = (req, res) => {
 
                 mensaje:"Login correcto",
 
+                token,
+
                 usuario:{
 
 
-                    id: usuario.id,
+                    id:usuario.id,
 
-                    nombre: usuario.nombre,
+                    nombre:usuario.nombre,
 
-                    correo: usuario.correo,
-
-                    rol: usuario.rol
+                    rol:usuario.rol
 
 
                 }
@@ -112,6 +138,7 @@ exports.login = (req, res) => {
 
 
     );
+
 
 
 };
